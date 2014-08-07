@@ -16,4 +16,6 @@ exports.start = ->
     ad.start()
   
 exports.stop = ->
-  
+  if ad?
+    ad.stop()
+  ad = null

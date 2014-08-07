@@ -10,7 +10,7 @@ exports.init = (socket, cb) ->
   
   
   socket.on 'connection', (data) ->
-    slaves[data.id] = new Slave(data.ws)
+    slaves[data.id] = new Slave(data.socket)
     
   socket.on 'disconnect', (data) ->
     delete slaves[slaves.id]

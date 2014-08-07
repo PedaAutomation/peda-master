@@ -1,15 +1,19 @@
+logger = require '../logger'
+
 mdns = require 'mdns'
 
 ad = null
 
 exports.init = (port, cb) ->
-  console.log "Initializing Discovery."
+  logger.info "Initializing Discovery."
   ad = mdns.createAdvertisement mdns.tcp('pedam'), port
-  console.log "Discovery initialized."
+  logger.info "Discovery initialized."
   cb()
 
 exports.start = ->
-  console.log "Starting Discovery."
+  logger.info "Starting Discovery."
   if ad?
     ad.start()
+  
+exports.stop = ->
   

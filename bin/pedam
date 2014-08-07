@@ -11,6 +11,8 @@ program
   .option("-db, --database [sqlite://peda.db]", "The path for the database [sqlite://peda.db]", "sqlite://peda.db")
   .parse(process.argv);
 
+process.on('exit', pedaMaster.stop);
+process.on('SIGINT', pedaMaster.stop)
 
 pedaMaster.init(parseInt(program.port), program.database, function() {
   pedaMaster.start();

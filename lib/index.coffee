@@ -1,10 +1,12 @@
+logger = require './logger'
+
 discovery = require './discovery'
 db        = require './db'
 async     = require 'async'
 
 
 exports.init = (port, dbPath, cb) ->
-  console.log("Initializing PedaMaster on port " + port + ".")
+  logger.info "Initializing PedaMaster on port " + port + "."
   
   async.parallel [
     (cb) ->
@@ -14,5 +16,12 @@ exports.init = (port, dbPath, cb) ->
   ], cb
   
 exports.start = ->
-  console.log("Starting PedaMaster.")
+  logger.info "Starting PedaMaster."
   discovery.start()
+
+exports.stop = (code) ->
+  logger.info "Stopping PedaMaster."
+  discovery.stop()
+  db.stop()
+  
+  process.exit()

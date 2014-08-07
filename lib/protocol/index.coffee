@@ -16,8 +16,11 @@ exports.init = (socket, cb) ->
     delete slaves[slaves.id]
     
   socket.on 'message', (data) ->
-    slaves[data.id].processMessage(data.message)
-    
+    try 
+      slaves[data.id].processMessage(JSON.parse(data.message))
+    catch e
+      console.log e
+      logger.log 'error', "Received invalid message: " + data.message, e
     
   logger.info "Protocol initialized and ready to rumble."
   cb()

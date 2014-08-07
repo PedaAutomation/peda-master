@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "description": "The master for the PEDA-Home-Automation",
   "main": "lib/index.js",
+  "bin": {
+    "pedam": "./bin/pedam"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -1,0 +1,5 @@
+#!/usr/bin/env node
+
+var pedaMaster = require('../lib/index.js');
+
+// TODO: Use the pedaMaster to do some amazing things.

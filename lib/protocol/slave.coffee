@@ -42,7 +42,7 @@ class Slave
     @logicCapabilities.push capability
     logger.info "Added Logic Capabiity to Slave \"#{@name}\": \"#{capability.name}\""
     
-  _handleOutputCapability: (out) ->
+  _handleOutputCapability: (cap) ->
     capability = new OutputCapability(cap.name, parseRegexFromJSON(cap.regex))
     @outputCapabilities.push capability
     logger.info "Added Output Capabiity to Slave \"#{@name}\": \"#{capability.name}\""

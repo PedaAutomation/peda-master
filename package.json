@@ -1,0 +1,29 @@
+{
+  "name": "peda-master",
+  "version": "0.0.0",
+  "description": "The master for the PEDA-Home-Automation",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PedaAutomation/peda-master.git"
+  },
+  "keywords": [
+    "peda",
+    "home",
+    "automation",
+    "coffeescript",
+    "pedab"
+  ],
+  "author": "Jan-Henrik Bruhn <jh.bruhn@me.com>",
+  "license": "GPLv2",
+  "bugs": {
+    "url": "https://github.com/PedaAutomation/peda-master/issues"
+  },
+  "homepage": "https://github.com/PedaAutomation/peda-master",
+  "dependencies": {
+    "coffee-script": "^1.7.1"
+  }
+}

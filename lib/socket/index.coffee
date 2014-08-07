@@ -32,8 +32,8 @@ class Socket extends EventEmitter
     @emit 'disconnect', { socket: ws, id: ws.id }
     @connections = @connections.splice(@connections.indexOf(ws), 1)
 
-  _messageHandler = (ws, message) ->
-    @emit 'message', { socket: ws, message: message }
+  _messageHandler: (ws, message) ->
+    @emit 'message', { socket: ws, id: ws.id, message: message }
 
   init: (port, cb) -> 
     

@@ -1,5 +1,5 @@
 class OutputCapability
-  constructor: (@name, @regex) ->
+  constructor: (@name) ->
     
 
 module.exports = OutputCapability

@@ -18,8 +18,8 @@ exports.init = (path, cb) ->
       require('./models/' + f)(orm, db)
     
     logger.info "Database initialized!"
-    
-    cb()    
+
+    cb()
 
 exports.stop = ->
   logger.info "Disconnecting database."

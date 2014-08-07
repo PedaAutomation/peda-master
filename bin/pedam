@@ -1,5 +1,16 @@
 #!/usr/bin/env node
 
-var pedaMaster = require('../lib/index.js');
+var program    = require('commander'),
+    pedaMaster = require('../lib/index.js')
+    pkg        = require('../package.json');
+    
+    
+program
+  .version(pkg.version)
+  .option("-p, --port [63532]", "The port [63532]", "63532")
+  .parse(process.argv);
 
-// TODO: Use the pedaMaster to do some amazing things.
+
+pedaMaster.init(parseInt(program.port));
+
+pedaMaster.start();

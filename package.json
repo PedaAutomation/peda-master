@@ -27,8 +27,11 @@
   },
   "homepage": "https://github.com/PedaAutomation/peda-master",
   "dependencies": {
+    "async": "^0.9.0",
     "coffee-script": "^1.7.1",
     "commander": "^2.3.0",
-    "mdns": "^2.2.0"
+    "mdns": "^2.2.0",
+    "orm": "^2.1.18",
+    "sqlite3": "^2.2.7"
   }
 }

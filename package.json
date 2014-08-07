@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/PedaAutomation/peda-master",
   "dependencies": {
-    "coffee-script": "^1.7.1"
+    "coffee-script": "^1.7.1",
+    "mdns": "^2.2.0"
   }
 }

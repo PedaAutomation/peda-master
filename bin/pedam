@@ -13,6 +13,9 @@ program
 
 process.on('exit', pedaMaster.stop);
 process.on('SIGINT', pedaMaster.stop)
+process.on('uncaughtException', function(err) {
+  console.log('Caught exception: ' + err);
+});
 
 pedaMaster.init(parseInt(program.port), program.database, function() {
   pedaMaster.start();

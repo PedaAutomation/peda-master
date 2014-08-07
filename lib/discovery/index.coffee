@@ -14,6 +14,7 @@ exports.start = ->
   logger.info "Starting Discovery."
   if ad?
     ad.start()
+  logger.info "Discovery running."
   
 exports.stop = ->
   if ad?

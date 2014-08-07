@@ -31,8 +31,10 @@
     "coffee-script": "^1.7.1",
     "commander": "^2.3.0",
     "mdns": "^2.2.0",
+    "node-uuid": "^1.4.1",
     "orm": "^2.1.18",
     "sqlite3": "^2.2.7",
-    "winston": "^0.7.3"
+    "winston": "^0.7.3",
+    "ws": "^0.4.32"
   }
 }

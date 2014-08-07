@@ -16,6 +16,13 @@ class Slave extends EventEmitter
     @outputCapabilities = []
     @name = @ws.id
   
+  hasOutputCapability: (name) ->
+    ret = false
+    @outputCapabilities.forEach (cap) ->
+      ret = true if cap.name == name
+    
+    return ret
+  
   processMessage: (message) ->
     if not message.message?
       throw new Error("The message does not have any message.")
@@ -25,6 +32,7 @@ class Slave extends EventEmitter
       when "name" then @name = message.data
       when "capabilities" then @_handleMessageCapabilities(message.data)
       when "input" then @_handleMessageInput(message.data)
+      when "forwardOutput" then @_handleMessageForwardOutput(message.data)
 
       
   _handleMessageCapabilities: (data) ->
@@ -54,11 +62,13 @@ class Slave extends EventEmitter
   _handleMessageInput: (input) ->
     this.emit 'input', input
     
+  _handleMessageForwardOutput: (data) ->
+    this.emit 'outputForward', data
+    
   
   sendHandleLogicMessage: (command) ->
     self = this
     @logicCapabilities.forEach (cap) ->
-      console.log cap
       if cap.respondsTo command.command
         logger.info "Sending Handle Logic to #{@name}."
         
@@ -66,5 +76,8 @@ class Slave extends EventEmitter
   
   handleCommand: (cmd) ->
     @sendHandleLogicMessage cmd
+    
+  handleOutput: (data) ->
+    @ws.send JSON.stringify ({ message: "handleOutput", data: data})
 
 module.exports = Slave

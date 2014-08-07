@@ -9,7 +9,24 @@ handleSlaveInput = (data) ->
   
   for id of slaves
     slaves[id].handleCommand data
-
+    
+handleSlaveOutputForward = (data) ->
+  logger.info "Output Forward requested: ", data
+  
+  if (not data.targetDevice) and (not data.targetCapability)
+    for id of slaves
+      slaves[id].handleOutput data.data
+  else if data.targetDevice and not data.targetCapability
+    for id of slaves
+      slave = slaves[id]
+      if slave.name == data.targetDevice
+        slave.handleOutput data.data
+  else if not data.target and data.targetCapability
+    data.data.targetCapability = data.targetCapability
+    
+    for id of slaves
+      if slave.hasOutputCapability data.targetCapability
+        slave.handleOutput data.data
 
 exports.init = (socket, cb) ->
   
@@ -18,7 +35,9 @@ exports.init = (socket, cb) ->
   
   socket.on 'connection', (data) ->
     slave = new Slave(data.socket)
+    
     slave.on 'input', handleSlaveInput
+    slave.on 'outputForward', handleSlaveOutputForward
     
     slaves[data.id] = slave
     

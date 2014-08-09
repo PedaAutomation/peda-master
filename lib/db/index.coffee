@@ -23,6 +23,6 @@ exports.init = (path, cb) ->
 
 exports.stop = ->
   logger.info "Disconnecting database."
-  # database.close()
+  database.close()
   # swag
   logger.info "Database disconnected."

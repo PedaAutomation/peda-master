@@ -38,6 +38,8 @@ exports.init = (socket, cb) ->
   
   
   socket.on 'connection', (data) ->
+    logger.info "A new Slave has connected!"
+
     slave = new Slave(data.socket)
     
     slave.on 'input', handleSlaveInput
@@ -46,6 +48,8 @@ exports.init = (socket, cb) ->
     slaves[data.id] = slave
     
   socket.on 'disconnect', (data) ->
+    logger.warn "Slave #{slaves[data.id].name} has disconnected."
+
     delete slaves[data.id]
     
   socket.on 'message', (data) ->

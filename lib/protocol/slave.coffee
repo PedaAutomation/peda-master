@@ -29,7 +29,7 @@ class Slave extends EventEmitter
     
     
     switch message.message
-      when "name" then @name = message.data
+      when "name" then @name = message.data; logger.info "Slave \"#{@name}\" is with us!"
       when "capabilities" then @_handleMessageCapabilities(message.data)
       when "input" then @_handleMessageInput(message.data)
       when "forwardOutput" then @_handleMessageForwardOutput(message.data)

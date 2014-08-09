@@ -26,7 +26,7 @@ handleSlaveOutputForward = (data) ->
     
     for id of slaves
       if slave.hasOutputCapability data.targetCapability
-        slave.handleOutput data.data
+        slave.handleOutput data
 
 exports.init = (socket, cb) ->
   

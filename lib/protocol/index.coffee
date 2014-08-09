@@ -15,7 +15,9 @@ handleSlaveOutputForward = (data) ->
   
   if (not data.targetDevice) and (not data.targetCapability)
     for id of slaves
-      slaves[id].handleOutput data
+      slave = slaves[id]
+      if slave.outputCapabilities.length > 0
+        slave.handleOutput data
   else if data.targetDevice and not data.targetCapability
     for id of slaves
       slave = slaves[id]

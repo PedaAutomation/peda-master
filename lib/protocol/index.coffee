@@ -18,11 +18,13 @@ handleSlaveOutputForward = (data) ->
       slave = slaves[id]
       if slave.outputCapabilities.length > 0
         slave.handleOutput data
+  
   else if data.targetDevice and not data.targetCapability
     for id of slaves
       slave = slaves[id]
       if slave.name == data.targetDevice
         slave.handleOutput data
+  
   else if not data.target and data.targetCapability
     data.data.targetCapability = data.targetCapability
     
@@ -44,7 +46,7 @@ exports.init = (socket, cb) ->
     slaves[data.id] = slave
     
   socket.on 'disconnect', (data) ->
-    delete slaves[slaves.id]
+    delete slaves[data.id]
     
   socket.on 'message', (data) ->
     try 

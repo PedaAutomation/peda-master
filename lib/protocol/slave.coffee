@@ -19,7 +19,7 @@ class Slave extends EventEmitter
   hasOutputCapability: (name) ->
     ret = false
     @outputCapabilities.forEach (cap) ->
-      ret = true if cap.name == name
+      ret = true if cap.name.indexOf(name) > -1
     
     return ret
   
@@ -70,7 +70,7 @@ class Slave extends EventEmitter
     self = this
     @logicCapabilities.forEach (cap) ->
       if cap.respondsTo command.command
-        logger.info "Sending Handle Logic to #{@name}."
+        logger.info "Sending Handle Logic to #{self.name}."
         
         self.ws.send JSON.stringify ({ message: "handleLogic", data: { command: command, capability: cap.name }})
   

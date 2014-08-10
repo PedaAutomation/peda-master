@@ -29,6 +29,7 @@ handleSlaveOutputForward = (data) ->
     data.data.targetCapability = data.targetCapability
     
     for id of slaves
+      slave = slaves[id]
       if slave.hasOutputCapability data.targetCapability
         slave.handleOutput data
 

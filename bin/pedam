@@ -8,6 +8,7 @@ var program    = require('commander'),
 program
   .version(pkg.version)
   .option("-p, --port [63532]", "The port [63532]", "63532")
+  .option("-l, --language [en]", "The language you want to use (de, en etc) [en]", "en")
   .option("-db, --database [sqlite://peda.db]", "The path for the database [sqlite://peda.db]", "sqlite://peda.db")
   .parse(process.argv);
 
@@ -17,6 +18,6 @@ process.on('uncaughtException', function(err) {
   console.log('Caught exception: ' + err);
 });
 
-pedaMaster.init(parseInt(program.port), program.database, function() {
+pedaMaster.init(parseInt(program.port), program.database, program.language, function() {
   pedaMaster.start();
 });

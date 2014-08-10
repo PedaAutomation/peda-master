@@ -65,6 +65,8 @@ class Slave extends EventEmitter
   _handleMessageForwardOutput: (data) ->
     this.emit 'outputForward', data
     
+  sendLanguageMessage: (language) ->
+    @ws.send JSON.stringify ({ message: "language", data: language})
   
   sendHandleLogicMessage: (command) ->
     self = this

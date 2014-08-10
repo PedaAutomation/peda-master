@@ -33,7 +33,7 @@ handleSlaveOutputForward = (data) ->
       if slave.hasOutputCapability data.targetCapability
         slave.handleOutput data
 
-exports.init = (socket, cb) ->
+exports.init = (socket, language, cb) ->
   
   logger.info "Initializing Protocol."
   
@@ -45,6 +45,8 @@ exports.init = (socket, cb) ->
     
     slave.on 'input', handleSlaveInput
     slave.on 'outputForward', handleSlaveOutputForward
+    
+    slave.sendLanguageMessage language
     
     slaves[data.id] = slave
     

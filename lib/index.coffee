@@ -8,7 +8,7 @@ protocol  = require './protocol'
 async     = require 'async'
 
 
-exports.init = (port, dbPath, cb) ->
+exports.init = (port, dbPath, language, cb) ->
   logger.info "Initializing PedaMaster on port " + port + "."
   
   async.parallel [
@@ -19,7 +19,7 @@ exports.init = (port, dbPath, cb) ->
     , (cb) ->
       socket.init port, cb
     , (cb) ->
-      protocol.init socket, cb
+      protocol.init socket, language, cb
   ], cb
   
 exports.start = ->
